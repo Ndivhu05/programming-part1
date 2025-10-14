@@ -22,10 +22,10 @@ public class Poe_Part2_NP {
         
         while (running) {
             if (!isLoggedIn) {
-                // Show login/registration menu using Scanner
+                // using Scanner
                 showAuthMenu();
             } else {
-                // Show messaging menu using JOptionPane after successful login
+                //using JOptionPane after successful login
                 showMessagingMenu();
             }
         }
@@ -125,7 +125,7 @@ public class Poe_Part2_NP {
             if (messageSent) {
                 successfullySent++;
             } else {
-                // User cancelled the entire process
+                
                 break;
             }
         }
@@ -155,7 +155,7 @@ public class Poe_Part2_NP {
                 return false; // User cancelled
             }
             
-            // Use the correct method signature - pass recipient as parameter
+           
             int recipientCheck = message.checkRecipientCell(recipient);
             if (recipientCheck == 1) {
                 validRecipient = true;
@@ -180,12 +180,12 @@ public class Poe_Part2_NP {
                 JOptionPane.QUESTION_MESSAGE);
             
             if (messageContent == null) {
-                return false; // User cancelled
+                return false; 
             }
             
             if (messageContent.length() <= 250) {
                 validMessage = true;
-                // Use the setter method which also creates the hash
+                
                 message.setMessageText(messageContent);
             } else {
                 JOptionPane.showMessageDialog(null, 
@@ -203,7 +203,7 @@ public class Poe_Part2_NP {
         if (result.contains("sent successfully")) {
             messages.add(message);
             
-            // Display message details using JOptionPane in the required order
+            // Display message details using JOptionPane 
             String messageDetails = String.format(
                 "Message Details:\n\nMessage ID: %s\nMessage Hash: %s\nRecipient: %s\nMessage: %s",
                 message.getMessageID(),
