@@ -1,6 +1,38 @@
-[{
-    "messageText": "hello my name is ndivhuwoooo",
-    "recipient": "2712345678",
-    "messageID": "0135350313",
-    "messageHash": "01:1:HELLONDIVHUWOOOO"
-}]
+[
+    {
+        "messageText": "hello my name is ndivhuwoooo",
+        "recipient": "2712345678",
+        "messageID": "0135350313",
+        "messageHash": "01:1:HELLONDIVHUWOOOO"
+    },
+    {
+        "messageText": "Test message for storage",
+        "messageID": "1621681134",
+        "messageHash": "16:13:TESTSTORAGE"
+    },
+    {
+        "messageText": "Test message for storage",
+        "messageID": "8008491267",
+        "messageHash": "80:12:TESTSTORAGE"
+    },
+    {
+        "messageText": "Test message for storage",
+        "messageID": "1893726207",
+        "messageHash": "18:12:TESTSTORAGE"
+    },
+    {
+        "messageText": "Test message for storage",
+        "messageID": "4044836537",
+        "messageHash": "40:12:TESTSTORAGE"
+    },
+    {
+        "messageText": "Test message for storage",
+        "messageID": "6034259694",
+        "messageHash": "60:12:TESTSTORAGE"
+    },
+    {
+        "messageText": "Test message for storage",
+        "messageID": "5565938014",
+        "messageHash": "55:12:TESTSTORAGE"
+    }
+]
