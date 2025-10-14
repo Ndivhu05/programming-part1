@@ -22,6 +22,7 @@ public class Poe_Part2_NP {
         boolean running = true;
         boolean loggedIn = false;
         
+        //option selection
         while (running && !loggedIn) {
             System.out.println("\nChoose an option:");
             System.out.println("1. Register");
