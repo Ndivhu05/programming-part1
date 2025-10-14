@@ -87,7 +87,7 @@ public class Poe_Part2_NP {
                 System.exit(0);
                 break;
             default:
-                // If user closes the dialog, exit the program
+                // If user closes the dialog,it will exit the program
                 System.exit(0);
         }
     }
