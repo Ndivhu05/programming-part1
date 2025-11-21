@@ -34,5 +34,11 @@
         "messageText": "Test message for storage",
         "messageID": "5565938014",
         "messageHash": "55:12:TESTSTORAGE"
+    },
+    {
+        "messageText": "xccbfbfhlou'o'uirgsrgr",
+        "recipient": "2712345667",
+        "messageID": "3059084333",
+        "messageHash": "30:2:XCCBFBFHLOU'O'UIRGSRGRXCCBFBFHLOU'O'UIRGSRGR"
     }
 ]

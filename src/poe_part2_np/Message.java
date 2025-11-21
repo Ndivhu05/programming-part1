@@ -1,7 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/EmptyTestNGTest.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 
 package poe_part2_np;
 
@@ -213,31 +214,61 @@ public class Message {
     }
 
     // Load stored messages from JSON file
-    public static List<Message> loadStoredMessages() {
-        List<Message> storedMessages = new ArrayList<>();
-        try {
-            if (Files.exists(Paths.get("stored_messages.json"))) {
-                String content = new String(Files.readAllBytes(Paths.get("stored_messages.json")));
-                JSONArray messagesArray = new JSONArray(content);
-                
-                for (int i = 0; i < messagesArray.length(); i++) {
+// Load stored messages from JSON file
+public static List<Message> loadStoredMessages() {
+    List<Message> storedMessages = new ArrayList<>();
+    try {
+        if (Files.exists(Paths.get("stored_messages.json"))) {
+            String content = new String(Files.readAllBytes(Paths.get("stored_messages.json")));
+            
+            // Handle empty file
+            if (content == null || content.trim().isEmpty()) {
+                return storedMessages;
+            }
+            
+            JSONArray messagesArray = new JSONArray(content);
+            
+            for (int i = 0; i < messagesArray.length(); i++) {
+                try {
                     JSONObject jsonObject = messagesArray.getJSONObject(i);
                     Message message = new Message();
-                    message.messageID = jsonObject.getString("messageID");
-                    message.messageHash = jsonObject.getString("messageHash");
-                    message.recipient = jsonObject.getString("recipient");
-                    message.messageText = jsonObject.getString("messageText");
+                    
+                    // Safely get values with fallbacks
+                    message.messageID = jsonObject.optString("messageID", "");
+                    message.messageHash = jsonObject.optString("messageHash", "");
+                    
+                    // Try different possible field names for recipient
+                    if (jsonObject.has("recipient")) {
+                        message.recipient = jsonObject.getString("recipient");
+                    } else if (jsonObject.has("Recipient")) {
+                        message.recipient = jsonObject.getString("Recipient");
+                    } else {
+                        message.recipient = ""; // Default value
+                    }
+                    
+                    // Try different possible field names for message text
+                    if (jsonObject.has("messageText")) {
+                        message.messageText = jsonObject.getString("messageText");
+                    } else if (jsonObject.has("Message")) {
+                        message.messageText = jsonObject.getString("Message");
+                    } else if (jsonObject.has("message")) {
+                        message.messageText = jsonObject.getString("message");
+                    } else {
+                        message.messageText = ""; // Default value
+                    }
+                    
                     storedMessages.add(message);
+                } catch (Exception e) {
+                    System.err.println("Error parsing message at index " + i + ": " + e.getMessage());
+                    // Continue with next message instead of failing completely
                 }
             }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, 
-                "Error loading stored messages: " + e.getMessage(), 
-                "Load Error", 
-                JOptionPane.WARNING_MESSAGE);
         }
-        return storedMessages;
+    } catch (IOException e) {
+        System.err.println("Error loading stored messages: " + e.getMessage());
     }
+    return storedMessages;
+}
 
   
 

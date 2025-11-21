@@ -1,3 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+
 package poe_part2_np;
 
 import java.util.ArrayList;
@@ -61,36 +66,101 @@ public class Poe_Part2_NP {
         }
     }
     
-    private static void showMessagingMenu() {
-        String[] options = {"Send Messages", "Show recently sent messages", "Quit"};
-        
-        int choice = JOptionPane.showOptionDialog(
-            null,
-            "Welcome to QuickChat. Please choose an option:",
-            "QuickChat Menu",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.INFORMATION_MESSAGE,
-            null,
-            options,
-            options[0]
-        );
-        
-        switch (choice) {
-            case 0: // Send Messages
-                sendMessages();
-                break;
-            case 1: // Show recently sent messages
-                JOptionPane.showMessageDialog(null, "Coming Soon. Feature in Development.", "Feature in Development", JOptionPane.INFORMATION_MESSAGE);
-                break;
-            case 2: // Quit
-                JOptionPane.showMessageDialog(null, "Thank you for using QuickChat. Goodbye!", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
-                System.exit(0);
-                break;
-            default:
-                // If user closes the dialog,it will exit the program
-                System.exit(0);
-        }
+private static void showMessagingMenu() {
+    String[] options = {"Send Messages", "Show recently sent messages", "Message Helper Functions", "Quit"};
+    
+    int choice = JOptionPane.showOptionDialog(
+        null,
+        "Welcome to QuickChat. Please choose an option:",
+        "QuickChat Menu",
+        JOptionPane.DEFAULT_OPTION,
+        JOptionPane.INFORMATION_MESSAGE,
+        null,
+        options,
+        options[0]
+    );
+    
+    switch (choice) {
+        case 0: // Send Messages
+            sendMessages();
+            break;
+        case 1: // Show recently sent messages
+            showRecentMessages();
+            break;
+        case 2: // Message Helper Functions
+            showMessageHelperMenu();
+            break;
+        case 3: // Quit
+            JOptionPane.showMessageDialog(null, "Thank you for using QuickChat. Goodbye!", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+            break;
+        default:
+            // If user closes the dialog,it will exit the program
+            System.exit(0);
     }
+}
+private static void showMessageHelperMenu() {
+    String[] options = {
+        "Display sender/recipient of all sent messages",
+        "Display longest sent message", 
+        "Search message by ID",
+        "Search messages by recipient",
+        "Delete message by hash",
+        "Display full report",
+        "Back to main menu"
+    };
+    
+    int choice = JOptionPane.showOptionDialog(
+        null,
+        "Message Helper Functions - Please choose an option:",
+        "Message Helper",
+        JOptionPane.DEFAULT_OPTION,
+        JOptionPane.INFORMATION_MESSAGE,
+        null,
+        options,
+        options[0]
+    );
+    
+    switch (choice) {
+        case 0: // Display sender/recipient
+            String result1 = MessageHelper.displaySenderRecipientOfAllSentMessages();
+            JOptionPane.showMessageDialog(null, result1, "Sent Messages Summary", JOptionPane.INFORMATION_MESSAGE);
+            break;
+        case 1: // Longest message
+            String result2 = MessageHelper.displayLongestSentMessage();
+            JOptionPane.showMessageDialog(null, result2, "Longest Message", JOptionPane.INFORMATION_MESSAGE);
+            break;
+        case 2: // Search by ID
+            String searchID = JOptionPane.showInputDialog(null, "Enter Message ID to search:", "Search by Message ID", JOptionPane.QUESTION_MESSAGE);
+            if (searchID != null && !searchID.trim().isEmpty()) {
+                String result3 = MessageHelper.searchMessageByID(searchID.trim());
+                JOptionPane.showMessageDialog(null, result3, "Search Results", JOptionPane.INFORMATION_MESSAGE);
+            }
+            break;
+        case 3: // Search by recipient
+            String recipient = JOptionPane.showInputDialog(null, "Enter recipient number to search:", "Search by Recipient", JOptionPane.QUESTION_MESSAGE);
+            if (recipient != null && !recipient.trim().isEmpty()) {
+                String result4 = MessageHelper.searchMessagesByRecipient(recipient.trim());
+                JOptionPane.showMessageDialog(null, result4, "Recipient Messages", JOptionPane.INFORMATION_MESSAGE);
+            }
+            break;
+        case 4: // Delete by hash
+            String hash = JOptionPane.showInputDialog(null, "Enter message hash to delete:", "Delete by Hash", JOptionPane.QUESTION_MESSAGE);
+            if (hash != null && !hash.trim().isEmpty()) {
+                String result5 = MessageHelper.deleteMessageByHash(hash.trim());
+                JOptionPane.showMessageDialog(null, result5, "Delete Result", JOptionPane.INFORMATION_MESSAGE);
+            }
+            break;
+        case 5: // Full report
+            String result6 = MessageHelper.displayFullReport();
+            JOptionPane.showMessageDialog(null, result6, "Full Message Report", JOptionPane.INFORMATION_MESSAGE);
+            break;
+        case 6: // Back to main menu
+            return;
+        default:
+            return;
+    }
+}
     
     private static void showRecentMessages() {
         String recentMessages = Message.printMessages();
