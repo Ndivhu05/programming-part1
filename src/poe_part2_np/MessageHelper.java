@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
 package poe_part2_np;
 
@@ -8,7 +11,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+/**
+ *
+ * @author RC_Student_Lab
+ */
 public class MessageHelper {
     // Arrays 
     private static List<Message> sentMessages = new ArrayList<>();

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author RC_Student_lab
+ * @author RC_Student_Lab
  */
 public class Poe_Part2_NP {
     private static Scanner scanner = new Scanner(System.in);
