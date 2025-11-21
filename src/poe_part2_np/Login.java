@@ -22,7 +22,7 @@ public class Login {
     
     // Constructor
     public Login() {
-        // No scanner here - input handling is in Main class
+      
     }
     
     // Method to check username format
