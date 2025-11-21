@@ -52,7 +52,7 @@ public class Message {
         return sb.toString();
     }
 
-    // Check if message ID is valid (not more than 10 characters)
+    // Check if message ID is valid ( is not more than 10 characters)
     public boolean checkMessageID() {
         return this.messageID != null && this.messageID.length() == 10;
     }
@@ -164,7 +164,7 @@ public class Message {
             messagesArray.put(messageJson);
             
             try (FileWriter file = new FileWriter("stored_messages.json")) {
-                file.write(messagesArray.toString(4)); // Pretty print with 4 spaces indentation
+                file.write(messagesArray.toString(4)); 
             }
             
             return "Message stored successfully in JSON file!";
@@ -213,8 +213,7 @@ public class Message {
         return new ArrayList<>(sentMessages);
     }
 
-    // Load stored messages from JSON file
-// Load stored messages from JSON file
+   
 public static List<Message> loadStoredMessages() {
     List<Message> storedMessages = new ArrayList<>();
     try {
