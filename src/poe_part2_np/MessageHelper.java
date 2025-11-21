@@ -9,24 +9,19 @@ import org.json.JSONObject;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/**
- * MessageHelper class to populate and manage message arrays
- */
 public class MessageHelper {
-    // Arrays as specified in requirements
+    // Arrays 
     private static List<Message> sentMessages = new ArrayList<>();
     private static List<Message> disregardedMessages = new ArrayList<>();
     private static List<Message> storedMessages = new ArrayList<>();
     private static List<String> messageHash = new ArrayList<>();
     private static List<String> messageID = new ArrayList<>();
     
-    /**
-     * Populate all arrays with existing message data
-     */
+   
     public static void populateArrays() {
         clearArrays(); // Clear existing data first
         
-        // Populate sent messages from Message class
+       
         List<Message> allSentMessages = Message.getSentMessages();
         sentMessages.addAll(allSentMessages);
         
@@ -53,9 +48,7 @@ public class MessageHelper {
         }
     }
     
-    /**
-     * Clear all arrays
-     */
+   
     private static void clearArrays() {
         sentMessages.clear();
         disregardedMessages.clear();
@@ -109,7 +102,7 @@ public class MessageHelper {
      * b. Display the longest sent message
      */
     public static String displayLongestSentMessage() {
-        populateArrays(); // Ensure arrays are up to date
+        populateArrays(); 
         
         if (sentMessages.isEmpty()) {
             return "No sent messages found.";
@@ -136,9 +129,7 @@ public class MessageHelper {
         return "No valid sent messages found.";
     }
     
-    /**
-     * c. Search for a message ID and display the corresponding recipient and message
-     */
+   
     public static String searchMessageByID(String searchID) {
         populateArrays(); // Ensure arrays are up to date
         
@@ -272,20 +263,16 @@ public class MessageHelper {
         return result.toString();
     }
     
-    /**
-     * Add a message to disregarded messages
-     */
+    
     public static void addToDisregardedMessages(Message message) {
         if (message != null) {
             disregardedMessages.add(message);
         }
     }
     
-    /**
-     * Get array statistics for reporting
-     */
+   
     public static String getArrayStatistics() {
-        populateArrays(); // Ensure arrays are up to date
+        populateArrays(); 
         
         return String.format("Array Statistics:\n\n" +
                 "Sent Messages: %d\n" +
